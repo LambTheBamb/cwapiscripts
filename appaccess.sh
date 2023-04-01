@@ -30,9 +30,7 @@ do
 
 	sleep 6s
 	echo "Status of ${appids[$i]}"
-	appaccess=$(curl -s -X GET --header 'Accept: application/json' --header "Authorization: Bearer $tfatokenn" "https://api.cloudways.com/api/v1/app/getApplicationAccess?server_id=${serverids[$i]}&app_id=${appids[$i]}" | cut -d ':' -f 4 | cut -d "}" -f 1)
-	echo "$appaccess"
-
+	curl -s -X GET --header 'Accept: application/json' --header "Authorization: Bearer $tfatoken" "https://api.cloudways.com/api/v1/app/getApplicationAccess?server_id=${serverids[$i]}&app_id=${appids[$i]}" 
 echo "\n/n NEW APP IN PROGRESS/n \n"
 
 done
