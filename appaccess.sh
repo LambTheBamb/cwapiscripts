@@ -26,7 +26,7 @@ do
 	tfatoken=$(curl -s -X POST --header 'Content-Type: application/x-www-form-urlencoded' --header 'Accept: application/json' -d "email=$cwemail&api_key=$apikey" 'https://api.cloudways.com/api/v1/oauth/access_token' | cut -d ":" -f 2 | cut -d '"' -f 2)
 	echo "\n/n DISABLING APP ACCESS FOR SERVER ID: ${serverids[$i]} APP ID: ${appids[$i]} \n /n"
 
-	curl -X POST --header 'Content-Type: application/x-www-form-urlencoded' --header "Authorization: Bearer $tfatoken" -d "server_id=${serverids[$i]}&app_id=${appids[$i]}&state=disable" 'https://api.cloudways.com/api/v1/app/state'
+	curl -X POST --header 'Content-Type: application/x-www-form-urlencoded' --header "Authorization: Bearer $tfatoken" -d "server_id=${serverids[$i]}&app_id=${appids[$i]}&state=$statusz" 'https://api.cloudways.com/api/v1/app/state'
 
 	sleep 6s
 	echo "Status of ${appids[$i]}"
